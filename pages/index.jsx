@@ -1,10 +1,26 @@
 import Layout from "../components/Layout";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 export default function Home() {
-  return (
-    <div>
-      <Layout title="Home">
-        <h1 className="text-bold">Hola mundo</h1>
+  const { data: session } = useSession();
+
+  if (session) {
+    return (
+      <Layout>
+        <h1>Has iniciado sesion como: {session.user.email}</h1>
       </Layout>
-    </div>
-  );
+    );
+  }
+  if (!session) {
+    return (
+      <Layout>
+        <h1>No has iniciado sesion</h1>
+      </Layout>
+    );
+  }
+  // return (
+  //   <Layout title="Home">
+  //     <h1>Home</h1>
+  //   </Layout>
+  // );
 }
