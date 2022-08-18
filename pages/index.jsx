@@ -8,6 +8,7 @@ export default function Home() {
     return (
       <Layout>
         <h1>Has iniciado sesion como: {session.user.email}</h1>
+        <h1>{session.user.name}</h1>
       </Layout>
     );
   }

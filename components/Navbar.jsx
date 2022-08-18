@@ -1,15 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import style from "../styles/Navbar.module.css";
+import Image from "next/image";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
-// import "boxicons";
+import { BiShoppingBag } from "react-icons/bi";
+import { Dropdown } from "flowbite-react";
+import { AiFillCaretDown } from "react-icons/ai";
 
 const Navbar = () => {
   const { data: session } = useSession();
 
   if (session) {
     return (
-      <nav className="flex px-10 h-[10vh] items-center justify-between shadow-md">
+      <nav className="flex px-10 h-[10vh] items-center justify-between shadow-md ">
         <div>
           <Link href="/">
             <img
@@ -27,21 +30,28 @@ const Navbar = () => {
             <Link href="/ropa">
               <a href="#">Ropa</a>
             </Link>
-            <Link href="/contactanos">
+            <Link href="/contactUs">
               <a href="#">Contáctanos</a>
             </Link>
-            <Link href="/sobreNosotros">
+            <Link href="/aboutUs">
               <a href="#">Sobre Nosotros</a>
             </Link>
           </ul>
         </div>
-        <div>
-          <button
-            onClick={() => signOut()}
-            className=" bg-mainFucsia px-3 py-2 text-white rounded"
-          >
-            Cerrar sesion
-          </button>
+        <div className="flex items-center">
+          <Dropdown label={session.user.name} color="">
+            <Dropdown.Item>Dashboard</Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/account">
+                <a href="">Cuenta</a>
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>Earnings</Dropdown.Item>
+            <Dropdown.Item onClick={() => signOut()}>
+              Cerrar sesión
+            </Dropdown.Item>
+          </Dropdown>
+          <BiShoppingBag className="text-mainFucsia text-xl" />
         </div>
       </nav>
     );
@@ -67,22 +77,23 @@ const Navbar = () => {
             <Link href="/ropa">
               <a href="#">Ropa</a>
             </Link>
-            <Link href="/contactanos">
+            <Link href="/contactUs">
               <a href="#">Contáctanos</a>
             </Link>
-            <Link href="/sobreNosotros">
+            <Link href="/aboutUs">
               <a href="#">Sobre Nosotros</a>
             </Link>
           </ul>
         </div>
         <div className="flex gap-5 items-center">
-          <button onClick={() => signIn()} className="text-navItems">
+          {/* <Link href="/signin">Iniciar sesion</Link> */}
+          <button onClick={() => signIn()} className={style.btnRegistrarse}>
             Iniciar sesion
           </button>
-          <button className={style.btnRegistrarse}>
+          {/* <button className={style.btnRegistrarse}>
             <Link href="/register">Registrarse</Link>
-          </button>
-          <box-icon name="shopping-bag" color="#E02076" />
+          </button> */}
+          <BiShoppingBag className="text-xl text-mainFucsia" />
         </div>
       </nav>
     );

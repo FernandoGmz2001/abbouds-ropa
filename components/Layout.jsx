@@ -9,7 +9,7 @@ function Layout({ children, title }) {
         <title>Abbouds Ropa {title ? `| ${title}` : ""}</title>
       </Head>
       <Navbar />
-      <div className="px-10">{children}</div>
+      <div className="px-10 mt-5 font-KumbhSans font-normal">{children}</div>
     </>
   );
 }
