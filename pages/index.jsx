@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -19,9 +19,4 @@ export default function Home() {
       </Layout>
     );
   }
-  // return (
-  //   <Layout title="Home">
-  //     <h1>Home</h1>
-  //   </Layout>
-  // );
 }

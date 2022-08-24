@@ -40,7 +40,9 @@ const Navbar = () => {
         </div>
         <div className="flex items-center">
           <Dropdown label={session.user.name} color="">
-            <Dropdown.Item>Dashboard</Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/dashboard">Dashboard</Link>
+            </Dropdown.Item>
             <Dropdown.Item>
               <Link href="/account">
                 <a href="">Cuenta</a>
